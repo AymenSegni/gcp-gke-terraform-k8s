@@ -1,0 +1,81 @@
+➜ terraform plan --var-file=dev.tfvars --out=postgresql_dev_plan_outputs.json
+var.kubeconfig_path
+  gke kubeconfig path
+
+  Enter a value: xxxxxxxxxx
+
+var.postgresqlDatabase
+  postgresql Database
+
+  Enter a value: xxxxxxxxxxxx
+
+var.postgresqlPassword
+  postgresql Password
+
+  Enter a value: xxxxxxxxxx
+
+var.postgresqlUsername
+  postgresql Username
+
+  Enter a value: xxxxxxxxx
+
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # module.postgresql.helm_release.postgresql_dev[0] will be created
+  + resource "helm_release" "postgresql_dev" {
+      + atomic                     = false
+      + chart                      = "postgresql"
+      + cleanup_on_fail            = false
+      + create_namespace           = false
+      + dependency_update          = false
+      + disable_crd_hooks          = false
+      + disable_openapi_validation = false
+      + disable_webhooks           = false
+      + force_update               = false
+      + id                         = (known after apply)
+      + lint                       = false
+      + manifest                   = (known after apply)
+      + max_history                = 0
+      + metadata                   = (known after apply)
+      + name                       = "bitnami"
+      + namespace                  = "default"
+      + recreate_pods              = false
+      + render_subchart_notes      = true
+      + replace                    = false
+      + repository                 = "https://charts.bitnami.com/bitnami"
+      + reset_values               = false
+      + reuse_values               = false
+      + skip_crds                  = false
+      + status                     = "deployed"
+      + timeout                    = 300
+      + verify                     = false
+      + version                    = "10.12.2"
+      + wait                       = true
+      + wait_for_jobs              = false
+
+      + set_sensitive {
+          + name  = "global.postgresql.postgresqlDatabase"
+          + value = (sensitive value)
+        }
+      + set_sensitive {
+          + name  = "global.postgresql.postgresqlPassword"
+          + value = (sensitive value)
+        }
+      + set_sensitive {
+          + name  = "global.postgresql.postgresqlUsername"
+          + value = (sensitive value)
+        }
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: postgresql_dev_plan_outputs.json
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "postgresql_dev_plan_outputs.json"
