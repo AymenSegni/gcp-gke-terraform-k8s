@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Chart.name }}_server
+  labels:
+    service: {{ .Chart.name }}_server
+spec:
+  selector:
+    app: {{ .Chart.name }}_server
+  externalTrafficPolicy: Cluster
+  ports:
+  - nodePort: 30000
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  sessionAffinity: None
+  type: LoadBalancer

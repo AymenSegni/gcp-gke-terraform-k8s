@@ -1,0 +1,7 @@
+apiVersion: v1
+description: Bookish Meme - When you're asked to Terraform Pluto
+name: bookish-meme
+maintainers:
+  - email: segniaymen1@gmail.com
+    name: Aymen Segni
+version: 0.0.1

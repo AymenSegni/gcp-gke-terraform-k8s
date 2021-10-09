@@ -1,0 +1,5 @@
+namespace = "server"
+
+environment = "dev"
+
+

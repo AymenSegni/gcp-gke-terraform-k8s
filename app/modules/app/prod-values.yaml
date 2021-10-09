@@ -1,0 +1,24 @@
+environment: prod
+
+replicas: 3
+
+image:
+  repository: aymensegni
+  name: bookish-meme_server
+  tag: v0.0.1
+
+
+secrets:
+  postgresql:
+    userKey: username
+    databaseKey: database
+    passwordKey: password
+
+
+resources:
+  requests:
+    cpu: 500m
+    memory: 512Mi
+  limit:
+    cpu: 1000m
+    memory: 1024Mi
