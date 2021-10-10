@@ -1,0 +1,11 @@
+bookish-meme-infrastructure/app/deployment on  task7-app-deploy [!?] using ☁️  bookish-meme/bookish-meme
+➜ terraform apply "app_dev_plan_outputs.json"
+module.app.helm_release.server: Creating...
+module.app.helm_release.server: Still creating... [10s elapsed]
+module.app.helm_release.server: Still creating... [20s elapsed]
+module.app.helm_release.server: Still creating... [30s elapsed]
+module.app.helm_release.server: Still creating... [40s elapsed]
+module.app.helm_release.server: Still creating... [50s elapsed]
+module.app.helm_release.server: Creation complete after 55s [id=server]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.

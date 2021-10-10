@@ -1,3 +1,3 @@
-namespace = "server"
+# namespace = "server"
 
 environment = "prod"

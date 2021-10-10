@@ -21,7 +21,11 @@ terraform {
 
 module "app" {
   source      = "../modules"
-  namespace   = var.namespace
+  # namespace   = var.namespace
   environment = var.environment
+
+  postgresqlPassword = base64encode(var.postgresqlPassword)
+  postgresqlUsername = base64encode(var.postgresqlUsername)
+  postgresqlDatabase = base64encode(var.postgresqlDatabase)
 
 }

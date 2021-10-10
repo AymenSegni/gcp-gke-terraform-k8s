@@ -1,3 +1,5 @@
+name: server
+
 environment: prod
 
 replicas: 3
@@ -7,18 +9,21 @@ image:
   name: bookish-meme_server
   tag: v0.0.1
 
+flask_env: production
 
 secrets:
   postgresql:
-    userKey: username
-    databaseKey: database
-    passwordKey: password
+    user: ""
+    database: ""
+    password: ""
 
+postgresql:
+  host: bitnami-postgresql.default.svc.cluster.local
 
 resources:
   requests:
     cpu: 500m
     memory: 512Mi
-  limit:
+  limits:
     cpu: 1000m
     memory: 1024Mi

@@ -1,11 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Chart.name }}_server
+  name: {{ .Values.name }}
   labels:
-    name: {{ .Chart.name }}_server
+    app: {{ .Values.name }}
 spec:
   replicas: {{ .Values.replicas }}
+  selector:
+      matchLabels:
+        app: {{ .Values.name }}
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -14,32 +17,35 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ .Chart.name }}_server
+        app: {{ .Values.name }}
     spec:
       containers:
-      - name: {{ .Chart.name }}_server
+      - name: {{ .Values.name }}
         image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
         imagePullPolicy: Always
         env:
         - name: FLASK_ENV
-          value: {{ .Values.environment }}
+          value: "{{ .Values.flask_env }}"
         - name: APP_SETTINGS
           value: "project.config.DevelopmentConfig"
         - name: POSTGRES_USER
           valueFrom:
             secretKeyRef:
               name: postgresql
-              key: {{ .Values.secrets.postgresql.userKey }}
+              key: user
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
               name: postgresql
-              key: {{ .Values.secrets.postgresql.passwordKey }}
+              key: password
         - name: POSTGRES_DB
           valueFrom:
             secretKeyRef:
               name: postgresql
-              key: {{ .Values.secrets.postgresql.databaseKey }}
+              key: database
+        - name: POSTGRES_HOST
+          value: {{ .Values.postgresql.host }}
+
         resources:
           requests: 
             memory: {{ .Values.resources.requests.memory }}

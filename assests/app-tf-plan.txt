@@ -1,0 +1,108 @@
+$ bookish-meme-infrastructure/app/deployment on  task7-app-deploy [!?] using ☁️  bookish-meme/bookish-meme
+➜ terraform plan --var-file=dev.tfvars --out=app_dev_plan_outputs.json
+var.postgresqlDatabase
+  postgresql Database
+
+  Enter a value: xxxxxxx
+
+var.postgresqlPassword
+  postgresql Password
+
+  Enter a value: xxxxxxx
+
+var.postgresqlUsername
+  postgresql Username
+
+  Enter a value: xxxxxxx
+
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # module.app.helm_release.server will be created
+  + resource "helm_release" "server" {
+      + atomic                     = false
+      + chart                      = "../modules/app"
+      + cleanup_on_fail            = false
+      + create_namespace           = true
+      + dependency_update          = false
+      + disable_crd_hooks          = false
+      + disable_openapi_validation = false
+      + disable_webhooks           = false
+      + force_update               = false
+      + id                         = (known after apply)
+      + lint                       = false
+      + manifest                   = (known after apply)
+      + max_history                = 0
+      + metadata                   = (known after apply)
+      + name                       = "server"
+      + namespace                  = "server"
+      + recreate_pods              = false
+      + render_subchart_notes      = true
+      + replace                    = false
+      + reset_values               = false
+      + reuse_values               = false
+      + skip_crds                  = false
+      + status                     = "deployed"
+      + timeout                    = 300
+      + values                     = [
+          + <<-EOT
+                name: bookish-mem-server
+
+                environment: dev
+
+                replicas: 1
+
+                image:
+                  repository: aymensegni
+                  name: bookish-meme_server
+                  tag: v0.0.1
+
+
+                secrets:
+                  postgresql:
+                    user: ""
+                    database: ""
+                    password: ""
+
+
+                resources:
+                  requests:
+                    cpu: 200m
+                    memory: 100Mi
+                  limits:
+                    cpu: 500m
+                    memory: 512Mi
+            EOT,
+        ]
+      + verify                     = false
+      + version                    = "0.0.1"
+      + wait                       = true
+      + wait_for_jobs              = false
+
+      + set_sensitive {
+          + name  = "secrets.postgresql.database"
+          + value = (sensitive value)
+        }
+      + set_sensitive {
+          + name  = "secrets.postgresql.password"
+          + value = (sensitive value)
+        }
+      + set_sensitive {
+          + name  = "secrets.postgresql.user"
+          + value = (sensitive value)
+        }
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: app_dev_plan_outputs.json
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "app_dev_plan_outputs.json"
+(gke_bookish-meme_europe-west1_bookish-meme-dev:server)
+bookish-meme-infrastructure/app/deployment on  task7-app-deploy [!?] using ☁️  bookish-meme/bookish-meme took 17s
