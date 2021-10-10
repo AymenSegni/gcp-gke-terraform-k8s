@@ -378,12 +378,3 @@ Response Examples:
 9. RBAC
 
 10. Testing and scanning
-
-
-
-
-
-
-
-
-
