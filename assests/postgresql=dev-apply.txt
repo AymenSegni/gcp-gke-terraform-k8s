@@ -1,0 +1,10 @@
+bookish-meme-infrastructure/postgresql/deployment on  task7-app-deploy [?] using ☁️  bookish-meme/bookish-meme took 20s
+➜ terraform apply "postgresql_dev_plan_outputs.json"
+module.postgresql.helm_release.postgresql_dev[0]: Creating...
+module.postgresql.helm_release.postgresql_dev[0]: Still creating... [10s elapsed]
+module.postgresql.helm_release.postgresql_dev[0]: Still creating... [20s elapsed]
+module.postgresql.helm_release.postgresql_dev[0]: Still creating... [30s elapsed]
+module.postgresql.helm_release.postgresql_dev[0]: Still creating... [40s elapsed]
+module.postgresql.helm_release.postgresql_dev[0]: Creation complete after 46s [id=bitnami]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.

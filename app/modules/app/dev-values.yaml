@@ -1,0 +1,30 @@
+name: server
+
+environment: dev
+
+replicas: 1
+
+image:
+  repository: aymensegni
+  name: bookish-meme_server
+  tag: v0.0.1
+
+flask_env: development
+
+
+secrets:
+  postgresql:
+    user: ""
+    database: ""
+    password: ""
+
+postgresql:
+  host: bitnami-postgresql.default.svc.cluster.local
+
+resources:
+  requests:
+    cpu: 200m
+    memory: 100Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi

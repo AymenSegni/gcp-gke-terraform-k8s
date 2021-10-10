@@ -1,0 +1,19 @@
+➜ kubectl get all
+NAME                         READY   STATUS    RESTARTS   AGE
+pod/bitnami-postgresql-0     1/1     Running   0          10h
+pod/server-f65698478-m4x6n   1/1     Running   0          8m24s
+
+NAME                                  TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)        AGE
+service/bitnami-postgresql            ClusterIP      10.30.145.220   <none>          5432/TCP       10h
+service/bitnami-postgresql-headless   ClusterIP      None            <none>          5432/TCP       10h
+service/kubernetes                    ClusterIP      10.30.0.1       <none>          443/TCP        2d13h
+service/server                        LoadBalancer   10.30.238.10    35.240.27.105   80:30000/TCP   8m25s
+
+NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/server   1/1     1            1           8m25s
+
+NAME                               DESIRED   CURRENT   READY   AGE
+replicaset.apps/server-f65698478   1         1         1       8m25s
+
+NAME                                  READY   AGE
+statefulset.apps/bitnami-postgresql   1/1     10h
