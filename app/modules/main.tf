@@ -1,8 +1,6 @@
 resource "helm_release" "server" {
-  name             = "server"
-  chart            = "${path.module}/app"
-  # create_namespace = true
-  # namespace        = var.namespace
+  name  = "server"
+  chart = "${path.module}/app"
 
   set_sensitive {
     name  = "secrets.postgresql.user"

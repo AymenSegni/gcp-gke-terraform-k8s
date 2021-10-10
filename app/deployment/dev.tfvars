@@ -1,5 +1,1 @@
-# namespace = "server"
-
 environment = "dev"
-
-
